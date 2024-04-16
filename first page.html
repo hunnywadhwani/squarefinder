@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Square and Square Root Finder</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+    .container {
+        text-align: center;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input, button {
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        width: 80%;
+        box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+    button {
+        background-color: #007BFF;
+        color: white;
+        cursor: pointer;
+        width: 40%;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    #result {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #e2e2e2;
+        border-radius: 5px;
+        font-size: 1.2em;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Square and Square Root Finder</h1>
+    <input type="number" id="numberInput" placeholder="Enter a number" onkeypress="validate(event)">
+    <button onclick="findSquare()">Find Square</button>
+    <button onclick="findSquareRoot()">Find Square Root</button>
+    <div id="result"></div>
+</div>
+
+<script>
+function findSquare() {
+    var input = document.getElementById("numberInput");
+    var number = parseFloat(input.value);
+    if (isNaN(number)) {
+        document.getElementById("result").innerText = "Please enter a valid number.";
+    } else {
+        var square = number * number;
+        document.getElementById("result").innerText = "Square: " + square.toFixed(2);
+    }
+}
+
+function findSquareRoot() {
+    var input = document.getElementById("numberInput");
+    var number = parseFloat(input.value);
+    if (isNaN(number)) {
+        document.getElementById("result").innerText = "Please enter a valid number.";
+    } else {
+        var squareRoot = Math.sqrt(number);
+        document.getElementById("result").innerText = "Square Root: " + squareRoot.toFixed(2);
+    }
+}
+
+function validate(event) {
+    var char = String.fromCharCode(event.which);
+    if (!(/[0-9]|\.|\-/.test(char))) {
+        event.preventDefault();
+    }
+}
+</script>
+</body>
+</html>
